@@ -1,0 +1,138 @@
+/* ============================================
+   Post.css — Estilos de la tarjeta de publicación
+   Cada post es una tarjeta con imagen, info del usuario
+   y botones de acción en la parte inferior.
+   La imagen siempre se muestra rotada -3 grados (izquierda).
+   ============================================ */
+
+/* .post__card: tarjeta completa del post
+   break-inside: avoid es clave para el layout de columnas (masonry)
+   evita que una tarjeta se corte entre dos columnas */
+.post__card {
+  background-color: #0f1724;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #1a2535;
+  break-inside: avoid; /* Para el layout de columnas CSS */
+  margin-bottom: 16px;  /* Espaciado entre cards en el masonry */
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.post__card:hover {
+  transform: translateY(-2px);
+  border-color: #2d3f55;
+}
+
+/* .post__image-wrapper: contenedor de la imagen
+   overflow: hidden recorta la imagen cuando está rotada */
+.post__image-wrapper {
+  overflow: hidden;
+  width: 100%;
+  /* Sin altura fija: la imagen determina la altura del contenedor */
+  position: relative;
+}
+
+/* .post__image: imagen del cat
+   transform: rotate(-3deg) rota la imagen 3 grados a la izquierda
+   scale(1.08) la escala un poco para que no haya huecos blancos en las esquinas
+   después de la rotación */
+.post__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transform: rotate(-3deg) scale(1.08);
+  transition: transform 0.3s ease;
+}
+
+/* En hover, la imagen vuelve a la posición normal (efecto de "enderezar") */
+.post__card:hover .post__image {
+  transform: rotate(0deg) scale(1.0);
+}
+
+/* .post__footer: barra inferior con usuario y botones
+   Flex row con espacio entre los dos grupos */
+.post__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background-color: #0f1724;
+}
+
+/* Grupo izquierdo: avatar + username */
+.post__user {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Avatar circular con la primera letra del username */
+.post__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f09433, #dc2743, #bc1888);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+/* Username en el footer del post */
+.post__username {
+  font-size: 12px;
+  color: #8b9ab5;
+  font-weight: 500;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Grupo derecho: botones de acción */
+.post__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* .post__action-btn: botón de ícono (like, comentar, compartir)
+   Son pequeños y sin fondo visible */
+.post__action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8b9ab5;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease, background-color 0.2s ease;
+  padding: 0;
+}
+
+.post__action-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.post__action-btn:hover {
+  color: #ffffff;
+  background-color: #1a2535;
+}
+
+/* Estado "likeado": el corazón se vuelve rosa */
+.post__action-btn--liked {
+  color: #e1306c !important;
+}
+
+.post__action-btn--liked:hover {
+  color: #f0597d !important;
+}

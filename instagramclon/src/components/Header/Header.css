@@ -1,0 +1,198 @@
+/* ============================================
+   Header.css — Estilos de la barra de navegación superior
+   El header está fijo (fixed) en la parte superior de la pantalla
+   con un fondo oscuro semitransparente y efecto blur.
+   ============================================ */
+
+/* .header__container: barra fija en la parte superior
+   - position: fixed la mantiene en pantalla al hacer scroll
+   - z-index: 100 la pone sobre todo el contenido
+   - backdrop-filter: blur crea el efecto de vidrio esmerilado */
+.header__container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 72px;
+  background-color: rgba(8, 13, 26, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1a2535;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 100;
+}
+
+/* ── Columna izquierda: Logo ── */
+.header__left {
+  display: flex;
+  align-items: center;
+  min-width: 220px; /* Misma anchura que el sidebar para alineación visual */
+}
+
+/* .header__logo: botón sin estilos de botón que actúa como logo/link
+   Muestra el ícono y el texto de Instagram */
+.header__logo {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Ícono SVG del logo */
+.header__logo-icon {
+  width: 28px;
+  height: 28px;
+  color: #ffffff;
+}
+
+/* Texto "Instagram" del logo */
+.header__logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  /* Fuente cursiva estilo Instagram */
+  font-family: 'Billabong', 'Dancing Script', cursive, sans-serif;
+}
+
+/* ── Columna central: Barra de búsqueda ── */
+.header__center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 24px;
+}
+
+/* .header__search: contenedor del input de búsqueda
+   Tiene fondo oscuro con borde sutil */
+.header__search {
+  display: flex;
+  align-items: center;
+  background-color: #111827;
+  border: 1px solid #1e2a3a;
+  border-radius: 8px;
+  padding: 8px 14px;
+  gap: 10px;
+  width: 100%;
+  max-width: 420px;
+}
+
+/* Ícono de lupa dentro del buscador */
+.header__search-icon {
+  width: 18px;
+  height: 18px;
+  color: #6b7a90;
+  flex-shrink: 0; /* No se achica al reducir el contenedor */
+}
+
+/* Input del buscador: sin bordes propios, hereda el estilo del contenedor */
+.header__search-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+}
+
+/* Placeholder más oscuro para no distraer */
+.header__search-input::placeholder {
+  color: #4a5568;
+}
+
+/* ── Columna derecha: Iconos y botón ── */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 220px;
+  justify-content: flex-end;
+}
+
+/* .header__icon-btn: botones de iconos (engranaje, cámara, mensajes)
+   Son cuadrados con hover sutil */
+.header__icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+}
+
+.header__icon-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Efecto hover en los iconos */
+.header__icon-btn:hover {
+  background-color: #1a2535;
+}
+
+/* .header__new-post-btn: botón con gradiente rosa estilo Instagram
+   Tiene el "+" y el texto "New Post" */
+.header__new-post-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border: none;
+  border-radius: 8px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 16px;
+  margin-left: 6px;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+.header__new-post-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.header__new-post-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px); /* Pequeño efecto de "levantamiento" */
+}
+
+.header__new-post-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive: en pantallas pequeñas ocultamos el texto del botón */
+@media (max-width: 768px) {
+  .header__container {
+    padding: 0 16px;
+    height: 60px;
+  }
+
+  .header__logo-text {
+    font-size: 18px;
+  }
+
+  .header__left,
+  .header__right {
+    min-width: auto;
+  }
+
+  .header__new-post-btn span {
+    display: none; /* Solo mostramos el + en móvil */
+  }
+}

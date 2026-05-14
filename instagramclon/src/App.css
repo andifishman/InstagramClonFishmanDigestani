@@ -1,0 +1,48 @@
+/* ============================================
+   App.css — Layout principal de la aplicación
+   Define cómo se distribuyen el header, sidebar
+   y el área de contenido principal en la pantalla.
+   ============================================ */
+
+/* .app: contenedor raíz de toda la aplicación
+   Ocupa toda la altura de la ventana */
+.app {
+  min-height: 100vh;
+  background-color: #080d1a;
+  display: flex;
+  flex-direction: column; /* Header arriba, layout abajo */
+}
+
+/* .app__layout: contenedor flex horizontal
+   Divide la pantalla en sidebar (izquierda) y contenido (derecha)
+   padding-top empuja el contenido debajo del header fijo */
+.app__layout {
+  display: flex;
+  flex-direction: row;
+  padding-top: 72px; /* Misma altura que el header fijo */
+  min-height: calc(100vh - 72px);
+}
+
+/* .app__main: área de contenido principal
+   margin-left: 260px desplaza el contenido para que no quede tapado
+   por el sidebar fijo de 260px de ancho */
+.app__main {
+  flex: 1;
+  margin-left: 260px; /* Mismo ancho que el sidebar fijo */
+  overflow-y: auto;
+  padding: 24px 32px;
+  min-height: calc(100vh - 72px);
+}
+
+/* Responsive: en pantallas pequeñas ocultamos el sidebar
+   y el contenido ocupa todo el ancho */
+@media (max-width: 768px) {
+  .app__layout {
+    padding-top: 60px;
+  }
+
+  .app__main {
+    margin-left: 0; /* Sin sidebar en móvil */
+    padding: 16px 12px;
+  }
+}

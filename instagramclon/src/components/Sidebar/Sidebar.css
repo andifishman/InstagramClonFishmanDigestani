@@ -1,0 +1,196 @@
+/* ============================================
+   Sidebar.css — Estilos de la barra lateral izquierda
+   El sidebar es fijo en la izquierda de la pantalla,
+   debajo del header. Muestra el perfil y la navegación.
+   ============================================ */
+
+/* .sidebar: contenedor fijo en el lado izquierdo
+   - position: fixed para que no se mueva al hacer scroll
+   - top: 72px para empezar justo debajo del header
+   - width: 260px es el ancho estándar de una sidebar de Instagram */
+.sidebar {
+  position: fixed;
+  top: 72px;
+  left: 0;
+  width: 260px;
+  height: calc(100vh - 72px);
+  background-color: #080d1a;
+  border-right: 1px solid #1a2535;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 16px 20px;
+  overflow-y: auto;
+  z-index: 50;
+}
+
+/* ── Sección de perfil ── */
+.sidebar__profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Wrapper de la foto de perfil
+   Tiene el borde gradiente estilo Instagram (como si fuera una story) */
+.sidebar__profile-photo-wrapper {
+  background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  border-radius: 50%;
+  padding: 3px; /* El padding crea el "borde" de gradiente */
+  cursor: pointer;
+  border: none;
+  margin-bottom: 14px;
+  transition: transform 0.2s ease;
+}
+
+.sidebar__profile-photo-wrapper:hover {
+  transform: scale(1.04);
+}
+
+/* Imagen de perfil circular
+   El fondo oscuro es el color que aparece entre la foto y el borde gradiente */
+.sidebar__profile-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #080d1a; /* Pequeño gap oscuro entre foto y borde */
+  display: block;
+}
+
+/* Nombre del usuario: blanco, grande y bold */
+.sidebar__name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Badge de verificación (✓ azul) */
+.sidebar__name::after {
+  content: "✓";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  font-size: 10px;
+  color: white;
+  font-weight: 700;
+}
+
+/* @handle: gris, más pequeño que el nombre */
+.sidebar__username {
+  font-size: 13px;
+  color: #6b7a90;
+  margin-bottom: 16px;
+}
+
+/* Contenedor de estadísticas: dos ítems en fila */
+.sidebar__stats {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+/* Cada estadística: ícono + número en fila */
+.sidebar__stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Ícono dentro de cada estadística */
+.sidebar__stat svg {
+  width: 18px;
+  height: 18px;
+  color: #6b7a90;
+}
+
+/* El ícono de corazón tiene color rosa */
+.sidebar__stat:last-child svg {
+  color: #e1306c;
+}
+
+/* ── Línea divisoria ── */
+.sidebar__divider {
+  width: 100%;
+  height: 1px;
+  background-color: #1a2535;
+  margin-bottom: 12px;
+}
+
+/* ── Menú de navegación ── */
+.sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* .sidebar__nav-item: cada ítem de navegación
+   Es un botón que ocupa todo el ancho del sidebar */
+.sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  background: none;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #8b9ab5;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-align: left;
+  width: 100%;
+  border-left: 3px solid transparent; /* Borde izquierdo transparente por defecto */
+}
+
+.sidebar__nav-item:hover {
+  background-color: #111827;
+  color: #ffffff;
+}
+
+/* Ítem activo: borde izquierdo rosa + texto blanco */
+.sidebar__nav-item--active {
+  color: #ffffff;
+  background-color: #111827;
+  border-left: 3px solid #e1306c; /* Borde rosa indica la sección activa */
+}
+
+/* Ícono del ítem de navegación */
+.sidebar__nav-icon {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar__nav-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Texto del ítem de navegación */
+.sidebar__nav-label {
+  font-size: 15px;
+}
+
+/* Responsive: en pantallas pequeñas ocultamos el sidebar */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
