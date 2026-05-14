@@ -1,8 +1,16 @@
-import Stories from '../Stories/Stories.jsx'
-import Post    from '../Post/Post.jsx'
+import type { Post } from '../../types.ts'
+import Stories from '../Stories/Stories.tsx'
+import PostCard from '../Post/Post.tsx'
 import './Feed.css'
 
-function Feed({ catPosts, isLoading, onLike, onOpenPost }) {
+interface FeedProps {
+  catPosts: Post[]
+  isLoading: boolean
+  onLike: (postId: string) => void
+  onOpenPost: (post: Post) => void
+}
+
+function Feed({ catPosts, isLoading, onLike, onOpenPost }: FeedProps) {
 
   if (isLoading) {
     return (
@@ -23,7 +31,7 @@ function Feed({ catPosts, isLoading, onLike, onOpenPost }) {
       <div className="feed__grid">
         {catPosts.map((post) => (
           // key={post.id} es obligatorio para listas renderizadas con .map()
-          <Post
+          <PostCard
             key={post.id}
             post={post}
             onLike={onLike}

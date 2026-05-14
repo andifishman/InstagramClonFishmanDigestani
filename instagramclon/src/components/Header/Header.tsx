@@ -1,6 +1,10 @@
 import './Header.css'
 
-function Header({ onNavigate }) {
+interface HeaderProps {
+  onNavigate: (view: string) => void
+}
+
+function Header({ onNavigate }: HeaderProps) {
   return (
     <header className="header__container">
 

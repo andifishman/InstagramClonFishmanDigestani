@@ -1,35 +1,36 @@
 import { useState, useEffect } from 'react'
+import type { Post } from './types.ts'
 
-import Header    from './components/Header/Header.jsx'
-import Sidebar   from './components/Sidebar/Sidebar.jsx'
-import Feed      from './components/Feed/Feed.jsx'
-import Profile   from './components/Profile/Profile.jsx'
-import PostModal from './components/PostModal/PostModal.jsx'
+import Header    from './components/Header/Header.tsx'
+import Sidebar   from './components/Sidebar/Sidebar.tsx'
+import Feed      from './components/Feed/Feed.tsx'
+import Profile   from './components/Profile/Profile.tsx'
+import PostModal from './components/PostModal/PostModal.tsx'
 
-import { fetchCatImages } from './services/catApi.js'
-import { userData, mockUsernames, catCaptions, getRandomDate } from './data/userData.js'
+import { fetchCatImages } from './services/catApi.ts'
+import { userData, mockUsernames, catCaptions, getRandomDate } from './data/userData.ts'
 import './App.css'
 
 function App() {
 
-  const [currentView, setCurrentView] = useState('feed')
-  const [catPosts, setCatPosts] = useState([])
-  const [selectedPost, setSelectedPost] = useState(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true)
+  const [currentView, setCurrentView] = useState<string>('feed')
+  const [catPosts, setCatPosts] = useState<Post[]>([])
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(true)
 
   // [] vacío: el efecto se ejecuta una sola vez al montar el componente
   useEffect(() => {
 
     // useEffect no puede ser directamente async, por eso definimos la función adentro
-    const loadCatPosts = async () => {
+    const loadCatPosts = async (): Promise<void> => {
       try {
         setIsLoading(true)
 
         const catImages = await fetchCatImages(15)
 
         // Transformamos cada imagen de la API en un objeto post con datos simulados
-        const formattedCatPosts = catImages.map((catData, index) => ({
+        const formattedCatPosts: Post[] = catImages.map((catData, index: number) => ({
           id: catData.id,
           imageUrl: catData.url,
           // Módulo (%) para rotar la lista y no repetir siempre el mismo nombre
@@ -56,7 +57,7 @@ function App() {
 
   }, [])
 
-  const handleLike = (postId) => {
+  const handleLike = (postId: string): void => {
     // Forma funcional de setCatPosts para usar siempre el estado más reciente
     setCatPosts(prevPosts =>
       prevPosts.map(post => {
@@ -73,17 +74,17 @@ function App() {
     )
   }
 
-  const handleOpenModal = (post) => {
+  const handleOpenModal = (post: Post): void => {
     setSelectedPost(post)
     setIsModalOpen(true)
   }
 
-  const handleCloseModal = () => {
+  const handleCloseModal = (): void => {
     setIsModalOpen(false)
     setSelectedPost(null)
   }
 
-  const handleNavigate = (view) => {
+  const handleNavigate = (view: string): void => {
     setCurrentView(view)
   }
 

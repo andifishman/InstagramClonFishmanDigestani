@@ -1,9 +1,14 @@
+import type { Post } from '../../types.ts'
 import './Stories.css'
 
-function Stories({ catPosts }) {
+interface StoriesProps {
+  catPosts: Post[]
+}
+
+function Stories({ catPosts }: StoriesProps) {
 
   // slice(0, 8) toma solo los primeros 8 posts para mostrar como stories
-  const storyItems = catPosts.slice(0, 8)
+  const storyItems: Post[] = catPosts.slice(0, 8)
 
   return (
     <section className="stories__section">
@@ -20,7 +25,7 @@ function Stories({ catPosts }) {
                 src={story.imageUrl}
                 alt={`Story de ${story.username}`}
                 className="story__image"
-                onError={(e) => { e.target.src = 'https://i.pravatar.cc/60?img=1' }}
+                onError={(e) => { e.currentTarget.src = 'https://i.pravatar.cc/60?img=1' }}
               />
             </div>
             <p className="story__username">@{story.username}</p>

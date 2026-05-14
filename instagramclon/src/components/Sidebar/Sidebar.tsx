@@ -1,9 +1,23 @@
+import type { ReactNode } from 'react'
+import type { UserData } from '../../types.ts'
 import './Sidebar.css'
 
-function Sidebar({ userData, currentView, onNavigate }) {
+interface SidebarProps {
+  userData: UserData
+  currentView: string
+  onNavigate: (view: string) => void
+}
+
+interface NavItem {
+  id: string
+  label: string
+  icon: ReactNode
+}
+
+function Sidebar({ userData, currentView, onNavigate }: SidebarProps) {
 
   // Array de ítems para renderizarlos con .map() en vez de repetir JSX manualmente
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       id: 'feed',
       label: 'Home',
@@ -80,7 +94,7 @@ function Sidebar({ userData, currentView, onNavigate }) {
             src={userData.profileImage}
             alt={`Foto de perfil de ${userData.name}`}
             className="sidebar__profile-photo"
-            onError={(e) => { e.target.src = 'https://i.pravatar.cc/150?img=5' }}
+            onError={(e) => { e.currentTarget.src = 'https://i.pravatar.cc/150?img=5' }}
           />
         </button>
 

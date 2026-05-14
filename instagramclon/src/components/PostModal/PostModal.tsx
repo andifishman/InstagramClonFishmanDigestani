@@ -1,9 +1,16 @@
-import { mockComments } from '../../data/userData.js'
+import type { Post } from '../../types.ts'
+import { mockComments } from '../../data/userData.ts'
 import './PostModal.css'
 
-function PostModal({ post, onClose, onLike }) {
+interface PostModalProps {
+  post: Post
+  onClose: () => void
+  onLike: (postId: string) => void
+}
 
-  const handleBackdropClick = (e) => {
+function PostModal({ post, onClose, onLike }: PostModalProps) {
+
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>): void => {
     // Si e.target === e.currentTarget, el clic fue en el backdrop y no en el modal
     if (e.target === e.currentTarget) {
       onClose()
@@ -20,7 +27,7 @@ function PostModal({ post, onClose, onLike }) {
             src={post.imageUrl}
             alt={`Post de ${post.username}`}
             className="modal__image"
-            onError={(e) => { e.target.src = 'https://placecats.com/600/600' }}
+            onError={(e) => { e.currentTarget.src = 'https://placecats.com/600/600' }}
           />
         </div>
 

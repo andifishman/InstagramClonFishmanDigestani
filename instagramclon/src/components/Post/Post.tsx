@@ -1,6 +1,13 @@
+import type { Post as PostType } from '../../types.ts'
 import './Post.css'
 
-function Post({ post, onLike, onOpenPost }) {
+interface PostProps {
+  post: PostType
+  onLike: (postId: string) => void
+  onOpenPost: (post: PostType) => void
+}
+
+function Post({ post, onLike, onOpenPost }: PostProps) {
   return (
     <div className="post__card">
 
@@ -9,7 +16,7 @@ function Post({ post, onLike, onOpenPost }) {
           src={post.imageUrl}
           alt={`Publicación de ${post.username}`}
           className="post__image"
-          onError={(e) => { e.target.src = 'https://placecats.com/300/300' }}
+          onError={(e) => { e.currentTarget.src = 'https://placecats.com/300/300' }}
         />
       </div>
 

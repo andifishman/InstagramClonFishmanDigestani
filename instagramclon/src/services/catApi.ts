@@ -1,9 +1,16 @@
 import axios from 'axios'
 
+interface CatImage {
+  id: string
+  url: string
+  width: number
+  height: number
+}
+
 const CAT_API_BASE_URL = 'https://api.thecatapi.com/v1/images/search'
 
-const fetchCatImages = async (quantity = 15) => {
-  const response = await axios.get(CAT_API_BASE_URL, {
+const fetchCatImages = async (quantity: number = 15): Promise<CatImage[]> => {
+  const response = await axios.get<CatImage[]>(CAT_API_BASE_URL, {
     params: {
       limit: quantity,
       size: 'med', // 'med' balancea calidad y velocidad de carga
@@ -13,3 +20,4 @@ const fetchCatImages = async (quantity = 15) => {
 }
 
 export { fetchCatImages }
+export type { CatImage }

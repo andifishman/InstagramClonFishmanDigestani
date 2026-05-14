@@ -1,6 +1,13 @@
+import type { UserData, Post } from '../../types.ts'
 import './Profile.css'
 
-function Profile({ userData, catPosts, onOpenPost }) {
+interface ProfileProps {
+  userData: UserData
+  catPosts: Post[]
+  onOpenPost: (post: Post) => void
+}
+
+function Profile({ userData, catPosts, onOpenPost }: ProfileProps) {
   return (
     <div className="profile__container">
 
@@ -11,7 +18,7 @@ function Profile({ userData, catPosts, onOpenPost }) {
             src={userData.profileImage}
             alt={`Foto de perfil de ${userData.name}`}
             className="profile__photo"
-            onError={(e) => { e.target.src = 'https://i.pravatar.cc/150?img=12' }}
+            onError={(e) => { e.currentTarget.src = 'https://i.pravatar.cc/150?img=12' }}
           />
         </div>
 
@@ -69,7 +76,7 @@ function Profile({ userData, catPosts, onOpenPost }) {
               src={post.imageUrl}
               alt={`Publicación de ${userData.username}`}
               className="profile__grid-image"
-              onError={(e) => { e.target.src = 'https://placecats.com/300/300' }}
+              onError={(e) => { e.currentTarget.src = 'https://placecats.com/300/300' }}
             />
             <div className="profile__grid-overlay">
               <span className="profile__grid-likes">

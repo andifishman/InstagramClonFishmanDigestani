@@ -1,4 +1,6 @@
-export const userData = {
+import type { UserData, Comment } from '../types.ts'
+
+export const userData: UserData = {
   id: 1,
   name: "Uğur Mercan",
   username: "ugur_mercan0",
@@ -10,7 +12,7 @@ export const userData = {
   website: "ugurmercan.dev",
 }
 
-export const mockUsernames = [
+export const mockUsernames: string[] = [
   "whiskers_cat",
   "fluffy_paws_42",
   "mittens_world",
@@ -28,7 +30,7 @@ export const mockUsernames = [
   "black_cat_magic",
 ]
 
-export const catCaptions = [
+export const catCaptions: string[] = [
   "Just found the perfect sunbeam ☀️ #catlife #sleepy",
   "Monday mood activated 😸 #cats #mondays",
   "They said I couldn't fit in this box... they were wrong 📦 #catsofinstagram",
@@ -46,7 +48,7 @@ export const catCaptions = [
   "Helping with yoga since always 🧘 #yogacat #namaste",
 ]
 
-export const mockComments = [
+export const mockComments: Comment[] = [
   { id: 1, username: "cat_lover_99",       text: "This is absolutely adorable! 😻",           time: "2h" },
   { id: 2, username: "meow_master_x",      text: "I need this cat in my life right now 🐾",   time: "3h" },
   { id: 3, username: "furry_friends_club", text: "Look at those beautiful eyes! 💕",           time: "5h" },
@@ -54,8 +56,8 @@ export const mockComments = [
   { id: 5, username: "purrfect_life_co",   text: "Cutest thing I've seen all week! 🥰",        time: "8h" },
 ]
 
-export const getRandomDate = () => {
-  const timeOptions = ["1h", "2h", "3h", "5h", "8h", "12h", "1d", "2d", "3d"]
+export const getRandomDate = (): string => {
+  const timeOptions: string[] = ["1h", "2h", "3h", "5h", "8h", "12h", "1d", "2d", "3d"]
   // Math.floor + Math.random() para obtener un índice entero dentro del rango del array
   return timeOptions[Math.floor(Math.random() * timeOptions.length)]
 }
