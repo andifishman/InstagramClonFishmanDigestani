@@ -1,60 +1,30 @@
-// Header.jsx — Barra superior de navegación
-// Este componente muestra la parte superior fija de la página:
-//   - Logo de Instagram (izquierda)
-//   - Barra de búsqueda (centro)
-//   - Iconos de acción: configuración, cámara, mensajes (derecha)
-//   - Botón "New Post" con gradiente rosa (derecha)
-//
-// Recibe por props:
-//   onNavigate: función del padre (App) para cambiar entre vistas
-
 import './Header.css'
 
-// ─────────────────────────────────────────────
-// Componente Header
-// Props:
-//   onNavigate (función) — cambia la vista activa en App
-// ─────────────────────────────────────────────
 function Header({ onNavigate }) {
   return (
-    // header__container: barra fija en la parte superior de la pantalla
     <header className="header__container">
 
-      {/* ── Columna izquierda: Logo ── */}
       <div className="header__left">
-        {/* Logo de Instagram en texto + ícono
-            Al hacer clic navega al feed (vista 'feed') */}
-        <button
-          className="header__logo"
-          onClick={() => onNavigate('feed')}
-        >
-          {/* Ícono SVG de la cámara de Instagram (estilizado) */}
+        <button className="header__logo" onClick={() => onNavigate('feed')}>
           <svg className="header__logo-icon" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"
               stroke="currentColor" strokeWidth="2"/>
-            <circle cx="12" cy="12" r="4"
-              stroke="currentColor" strokeWidth="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="2"/>
             <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
           </svg>
-          {/* Nombre de la app */}
           <span className="header__logo-text">Instagram</span>
         </button>
       </div>
 
-      {/* ── Columna central: Barra de búsqueda ── */}
       <div className="header__center">
         <div className="header__search">
-          {/* Ícono de lupa para la búsqueda */}
           <svg className="header__search-icon" viewBox="0 0 24 24" fill="none"
             xmlns="http://www.w3.org/2000/svg">
             <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="2"/>
             <line x1="21" y1="21" x2="16.65" y2="16.65"
               stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
           </svg>
-
-          {/* Input de búsqueda: solo visual, no tiene funcionalidad real
-              (el proyecto no requiere búsqueda funcional) */}
           <input
             type="text"
             placeholder="Username, hashtag and story search"
@@ -63,10 +33,8 @@ function Header({ onNavigate }) {
         </div>
       </div>
 
-      {/* ── Columna derecha: Iconos y botón New Post ── */}
       <div className="header__right">
 
-        {/* Ícono de configuración (engranaje) */}
         <button className="header__icon-btn" title="Settings">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor" strokeWidth="2">
@@ -83,7 +51,6 @@ function Header({ onNavigate }) {
           </svg>
         </button>
 
-        {/* Ícono de cámara */}
         <button className="header__icon-btn" title="Camera">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor" strokeWidth="2">
@@ -92,7 +59,6 @@ function Header({ onNavigate }) {
           </svg>
         </button>
 
-        {/* Ícono de mensajes directos (avión de papel) */}
         <button className="header__icon-btn" title="Direct Messages">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor" strokeWidth="2" strokeLinejoin="round">
@@ -101,10 +67,7 @@ function Header({ onNavigate }) {
           </svg>
         </button>
 
-        {/* Botón "New Post" con gradiente rosa
-            Simula el botón para crear una nueva publicación */}
         <button className="header__new-post-btn">
-          {/* Ícono + */}
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
             stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
             <line x1="12" y1="5" x2="12" y2="19"/>

@@ -1,23 +1,9 @@
-/* ============================================
-   index.css — Estilos globales base
-   Se aplican a TODA la aplicación.
-   Aquí reseteamos márgenes, definimos la fuente
-   principal y el color de fondo global del tema dark.
-   ============================================ */
-
-/* Reset universal: elimina márgenes y padding por defecto
-   del navegador. box-sizing: border-box hace que el padding
-   y border no agranden el tamaño del elemento */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Estilo base del body:
-   - Fondo oscuro con tinte azul marino (tema dark Instagram)
-   - Fuente system-ui para que se vea nativa en cada sistema operativo
-   - Color de texto blanco por defecto */
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Oxygen, Ubuntu, sans-serif;
@@ -26,15 +12,12 @@ body {
   min-height: 100vh;
 }
 
-/* #root es el contenedor principal de React.
-   Lo hacemos que ocupe todo el ancho y alto disponible */
 #root {
   width: 100%;
   min-height: 100vh;
 }
 
-/* Scrollbar personalizada para navegadores Chrome/Edge/Safari (webkit)
-   Hacemos la scrollbar delgada y del mismo color oscuro del tema */
+/* Scrollbar personalizada para Chrome/Edge/Safari */
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;

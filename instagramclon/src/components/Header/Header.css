@@ -1,13 +1,4 @@
-/* ============================================
-   Header.css — Estilos de la barra de navegación superior
-   El header está fijo (fixed) en la parte superior de la pantalla
-   con un fondo oscuro semitransparente y efecto blur.
-   ============================================ */
-
-/* .header__container: barra fija en la parte superior
-   - position: fixed la mantiene en pantalla al hacer scroll
-   - z-index: 100 la pone sobre todo el contenido
-   - backdrop-filter: blur crea el efecto de vidrio esmerilado */
+/* position: fixed + backdrop-filter para el efecto de vidrio esmerilado */
 .header__container {
   position: fixed;
   top: 0;
@@ -25,15 +16,12 @@
   z-index: 100;
 }
 
-/* ── Columna izquierda: Logo ── */
 .header__left {
   display: flex;
   align-items: center;
   min-width: 220px; /* Misma anchura que el sidebar para alineación visual */
 }
 
-/* .header__logo: botón sin estilos de botón que actúa como logo/link
-   Muestra el ícono y el texto de Instagram */
 .header__logo {
   background: none;
   border: none;
@@ -46,24 +34,20 @@
   text-decoration: none;
 }
 
-/* Ícono SVG del logo */
 .header__logo-icon {
   width: 28px;
   height: 28px;
   color: #ffffff;
 }
 
-/* Texto "Instagram" del logo */
 .header__logo-text {
   font-size: 22px;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.5px;
-  /* Fuente cursiva estilo Instagram */
   font-family: 'Billabong', 'Dancing Script', cursive, sans-serif;
 }
 
-/* ── Columna central: Barra de búsqueda ── */
 .header__center {
   flex: 1;
   display: flex;
@@ -71,8 +55,6 @@
   padding: 0 24px;
 }
 
-/* .header__search: contenedor del input de búsqueda
-   Tiene fondo oscuro con borde sutil */
 .header__search {
   display: flex;
   align-items: center;
@@ -85,15 +67,13 @@
   max-width: 420px;
 }
 
-/* Ícono de lupa dentro del buscador */
 .header__search-icon {
   width: 18px;
   height: 18px;
   color: #6b7a90;
-  flex-shrink: 0; /* No se achica al reducir el contenedor */
+  flex-shrink: 0;
 }
 
-/* Input del buscador: sin bordes propios, hereda el estilo del contenedor */
 .header__search-input {
   background: none;
   border: none;
@@ -103,12 +83,10 @@
   width: 100%;
 }
 
-/* Placeholder más oscuro para no distraer */
 .header__search-input::placeholder {
   color: #4a5568;
 }
 
-/* ── Columna derecha: Iconos y botón ── */
 .header__right {
   display: flex;
   align-items: center;
@@ -117,8 +95,6 @@
   justify-content: flex-end;
 }
 
-/* .header__icon-btn: botones de iconos (engranaje, cámara, mensajes)
-   Son cuadrados con hover sutil */
 .header__icon-btn {
   background: none;
   border: none;
@@ -138,13 +114,10 @@
   height: 20px;
 }
 
-/* Efecto hover en los iconos */
 .header__icon-btn:hover {
   background-color: #1a2535;
 }
 
-/* .header__new-post-btn: botón con gradiente rosa estilo Instagram
-   Tiene el "+" y el texto "New Post" */
 .header__new-post-btn {
   display: flex;
   align-items: center;
@@ -169,14 +142,13 @@
 
 .header__new-post-btn:hover {
   opacity: 0.9;
-  transform: translateY(-1px); /* Pequeño efecto de "levantamiento" */
+  transform: translateY(-1px);
 }
 
 .header__new-post-btn:active {
   transform: translateY(0);
 }
 
-/* Responsive: en pantallas pequeñas ocultamos el texto del botón */
 @media (max-width: 768px) {
   .header__container {
     padding: 0 16px;
@@ -193,6 +165,6 @@
   }
 
   .header__new-post-btn span {
-    display: none; /* Solo mostramos el + en móvil */
+    display: none;
   }
 }

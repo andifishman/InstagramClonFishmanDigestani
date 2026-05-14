@@ -1,15 +1,7 @@
-/* ============================================
-   Stories.css — Estilos de la sección de historias
-   Muestra una fila horizontal de avatares circulares
-   con bordes de gradiente colorido.
-   ============================================ */
-
-/* Sección completa de stories */
 .stories__section {
   margin-bottom: 32px;
 }
 
-/* Título "STORIES" en mayúsculas y bold */
 .stories__title {
   font-size: 16px;
   font-weight: 700;
@@ -19,16 +11,13 @@
   text-transform: uppercase;
 }
 
-/* Contenedor horizontal con scroll
-   overflow-x: auto permite scroll horizontal cuando hay muchos items
-   scrollbar oculta para una apariencia más limpia */
+/* scrollbar-width: none oculta la barra de scroll pero mantiene el scroll funcional */
 .stories__container {
   display: flex;
   align-items: center;
   gap: 20px;
   overflow-x: auto;
   padding-bottom: 8px;
-  /* Ocultamos la scrollbar horizontalmente pero mantenemos funcionalidad */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -37,13 +26,12 @@
   display: none;
 }
 
-/* Cada story individual: círculo + username debajo */
 .story__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  flex-shrink: 0; /* No se achica al reducir el contenedor */
+  flex-shrink: 0;
   cursor: pointer;
   transition: transform 0.2s ease;
 }
@@ -52,20 +40,17 @@
   transform: scale(1.06);
 }
 
-/* .story__ring: el anillo con gradiente colorido
-   Usamos un fondo gradiente con padding para simular el borde.
-   Es el truco estándar para bordes gradiente en CSS. */
+/* Truco de borde gradiente: fondo gradiente + padding visible como borde */
 .story__ring {
   background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
   border-radius: 50%;
-  padding: 3px; /* Este padding es el "borde" visible */
+  padding: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Imagen circular dentro del anillo
-   border: 3px solid crea un pequeño gap oscuro entre la foto y el anillo */
+/* border: 3px solid crea el gap oscuro entre la imagen y el anillo de gradiente */
 .story__image {
   width: 64px;
   height: 64px;
@@ -73,11 +58,9 @@
   object-fit: cover;
   border: 3px solid #080d1a;
   display: block;
-  /* transform: rotate(-3deg) — imágenes rotadas 3 grados a la izquierda */
   transform: rotate(-3deg);
 }
 
-/* Username debajo del círculo: pequeño y gris */
 .story__username {
   font-size: 11px;
   color: #6b7a90;
@@ -88,7 +71,6 @@
   text-align: center;
 }
 
-/* Flecha de "más stories" al final de la fila */
 .story__more {
   flex-shrink: 0;
   display: flex;
@@ -96,7 +78,6 @@
   justify-content: center;
 }
 
-/* Botón circular para la flecha */
 .story__more-btn {
   width: 40px;
   height: 40px;
